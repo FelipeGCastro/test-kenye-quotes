@@ -48,7 +48,10 @@ function App() {
       <header className='buttonsContainer'>
         <button
           onClick={handleAddQuote}
-          className='quoteButton'>{loading ? 'Loading' : 'Request Quote'}</button>
+          disabled={loading}
+          className='quoteButton'
+        >{loading ? 'Loading' : 'Request Quote'}
+        </button>
         <button onClick={handleDeleteAll} className='quoteButton deleteAllButton'>Delete All</button>
       </header>
       {renderQuotes()}
