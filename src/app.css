@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.quoteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: aquamarine;
+  margin-top: 20px;
+}

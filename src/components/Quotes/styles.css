@@ -1,0 +1,16 @@
+.quoteContainer {
+  display: flex;
+  align-items: center;
+}
+
+.quoteDeleteButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: darkred;
+  color: white;
+  padding: 7px 20px;
+  margin: 0 10px;
+  border-radius: 4px;
+  border: none;
+}
