@@ -6,16 +6,20 @@ import Quote from './components/Quotes'
 
 function App() {
   const [quotes, setQuotes] = useState([])
+  const [loading, setLoading] = useState(false)
 
   const handleAddQuote = async () => {
+    setLoading(true)
     try {
       const result = await api.get('/')
       if (result) {
         const newQuotes = quotes.concat([result.data.quote])
         setQuotes(newQuotes)
+        setLoading(false)
       }
     } catch (error) {
       console.log(error)
+      setLoading(false)
     }
   }
 
@@ -42,7 +46,9 @@ function App() {
   return (
     <div className='container'>
       <header className='buttonsContainer'>
-        <button onClick={handleAddQuote} className='quoteButton'>Request Quote</button>
+        <button
+          onClick={handleAddQuote}
+          className='quoteButton'>{loading ? 'Loading' : 'Request Quote'}</button>
         <button onClick={handleDeleteAll} className='quoteButton deleteAllButton'>Delete All</button>
       </header>
       {renderQuotes()}
