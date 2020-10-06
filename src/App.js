@@ -24,21 +24,28 @@ function App() {
     setQuotes(newQuotes)
   }, [quotes, setQuotes])
 
+  const handleDeleteAll = useCallback(() => {
+    setQuotes([])
+  }, [])
+
   const renderQuote = useCallback((quote, index) => {
     return <Quote key={index} quote={quote} onDelete={handleDeleteQuote.bind(null, index)} />
   }, [handleDeleteQuote])
 
   const renderQuotes = useCallback(() => {
     return (
-      <ul>
+      <ul className='quotesContainer'>
         {quotes.map(renderQuote)}
       </ul>)
   }, [quotes, renderQuote])
 
   return (
     <div className='container'>
+      <header className='buttonsContainer'>
+        <button onClick={handleAddQuote} className='quoteButton'>Request Quote</button>
+        <button onClick={handleDeleteAll} className='quoteButton deleteAllButton'>Delete All</button>
+      </header>
       {renderQuotes()}
-      <button onClick={handleAddQuote} className='quoteButton'>Request Quote</button>
     </div>
   )
 }
